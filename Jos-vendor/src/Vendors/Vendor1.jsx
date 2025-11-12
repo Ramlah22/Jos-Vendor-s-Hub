@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Vendor1 from "../assets/vendor1.jpeg";
-import Vendor1img from "../assets/vendor1img.jpeg";
-import Vendor1img1 from "../assets/vendor1img1.jpeg";
-import Vendor1img2 from "../assets/vendor1img2.jpeg";
-import Vendor1img3 from "../assets/vendor1img3.jpeg";
+import Vendor1img from "../assets/Vendor1img.jpeg";
+import Vendor1img1 from "../assets/Vendor1img1.jpeg";
+import Vendor1img2 from "../assets/Vendor1img2.jpeg";
+import Vendor1img3 from "../assets/Vendor1img3.jpeg";
 import {
   Heart,
   Share2,
