@@ -383,7 +383,7 @@ export default function LandingPage() {
           <Link to="/product" className="bg-white text-[#016e52] px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition">
             More Products
           </Link>
-          <Link to="/vendor-profile" className="border border-gray-300 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition">
+          <Link to="/vendors" className="border border-gray-300 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition">
             Browse Vendors
           </Link>
         </div>
