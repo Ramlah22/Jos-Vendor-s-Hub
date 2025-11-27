@@ -32,9 +32,9 @@ const ProductModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="bg-white rounded-xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+        <div className="p-4 sm:p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900">
               {editingProduct ? "Edit Product" : "Add New Product"}
@@ -44,8 +44,8 @@ const ProductModal = ({
             </button>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <form onSubmit={onSubmit} className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {/* Left Column */}
               <div className="space-y-4">
                 <div>
@@ -79,7 +79,7 @@ const ProductModal = ({
                   />
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Price (₦) <span className="text-red-500">*</span>
@@ -129,7 +129,7 @@ const ProductModal = ({
                   </select>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Brand</label>
                     <input
@@ -212,7 +212,7 @@ const ProductModal = ({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
                     <input
@@ -239,7 +239,7 @@ const ProductModal = ({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Color</label>
                     <input
@@ -555,9 +555,9 @@ export default function VendorProducts() {
   }, []);
 
   const ProductDetailsModal = () => (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="bg-white rounded-xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
+        <div className="p-4 sm:p-6">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-gray-900">Product Details</h2>
             <button 
@@ -643,16 +643,16 @@ export default function VendorProducts() {
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
       <VendorSidebar />
 
-      <div className="ml-64 transition-all duration-300 p-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6">
+      <div className="lg:ml-64 transition-all duration-300 p-4 sm:p-6 pt-16 lg:pt-6">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">My Products</h2>
-              <p className="text-gray-600 mt-1">Manage your product inventory</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">My Products</h2>
+              <p className="text-sm sm:text-base text-gray-600 mt-1">Manage your product inventory</p>
             </div>
             <button
               onClick={() => setShowProductModal(true)}
-              className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-emerald-700 transition text-sm sm:text-base"
             >
               <Plus size={20} />
               Add Product
@@ -660,7 +660,7 @@ export default function VendorProducts() {
           </div>
 
           {/* Search and Filter */}
-          <div className="flex flex-col lg:flex-row gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
               <input
@@ -705,7 +705,7 @@ export default function VendorProducts() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {filteredProducts.map((product) => (
                 <div key={product.id} className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   {product.imageUrl ? (

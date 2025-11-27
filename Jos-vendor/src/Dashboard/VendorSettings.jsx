@@ -303,9 +303,9 @@ export default function VendorSettings() {
       <ToastContainer position="top-right" autoClose={3000} />
       <VendorSidebar />
 
-      <div className="ml-64 transition-all duration-300 p-6">
+      <div className="lg:ml-64 transition-all duration-300 p-4 sm:p-6 pt-16 lg:pt-6">
         <div className="max-w-4xl">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">Settings</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Settings</h1>
 
           {/* Profile Picture Section */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 mb-6">
@@ -361,8 +361,8 @@ export default function VendorSettings() {
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <h2 className="text-xl font-bold text-gray-900 mb-6">Business Information</h2>
 
-            <form onSubmit={handleSaveSettings} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSaveSettings} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
@@ -396,7 +396,7 @@ export default function VendorSettings() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
@@ -430,7 +430,7 @@ export default function VendorSettings() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     <div className="flex items-center gap-2">
@@ -484,11 +484,11 @@ export default function VendorSettings() {
                 />
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:bg-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Save size={20} />
                   {loading ? "Saving..." : "Save Changes"}
@@ -496,7 +496,7 @@ export default function VendorSettings() {
                 <button
                   type="button"
                   onClick={() => navigate('/vendor/overview')}
-                  className="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-300 transition"
+                  className="w-full sm:w-auto bg-gray-200 text-gray-700 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium hover:bg-gray-300 transition"
                 >
                   Cancel
                 </button>

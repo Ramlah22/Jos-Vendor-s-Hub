@@ -92,7 +92,7 @@ export default function Header() {
                     </div>
                     <div className="py-2">
                       <Link
-                        to="/dashboard"
+                        to="/Vendordashboard"
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
                         onClick={() => setShowProfileMenu(false)}
                       >

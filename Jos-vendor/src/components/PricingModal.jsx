@@ -10,9 +10,9 @@ const PricingModal = ({ isOpen, onClose, onSelectPlan }) => {
     {
       id: 'pro',
       name: 'Pro Plan',
-      price: '₦5,000',
+      price: '₦3,000',
       period: '/month',
-      originalPrice: '₦10,000',
+      originalPrice: '₦5,000',
       badge: 'Most Popular',
       badgeColor: 'bg-blue-500',
       icon: Crown,
@@ -33,9 +33,9 @@ const PricingModal = ({ isOpen, onClose, onSelectPlan }) => {
     {
       id: 'pro-plus',
       name: 'Pro Plus Plan',
-      price: '₦15,000',
+      price: '₦5,000',
       period: '/month',
-      originalPrice: '₦20,000',
+      originalPrice: '₦15,000',
       badge: 'Premium',
       badgeColor: 'bg-gradient-to-r from-purple-500 to-pink-500',
       icon: Zap,

@@ -75,13 +75,13 @@ export default function VendorOrders() {
       <ToastContainer position="top-right" autoClose={3000} />
       <VendorSidebar />
 
-      <div className="ml-64 transition-all duration-300 p-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex justify-between items-start mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">Customer Inquiries</h2>
+      <div className="lg:ml-64 transition-all duration-300 p-4 sm:p-6 pt-16 lg:pt-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Customer Inquiries</h2>
             
             {/* Filter Tabs */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 overflow-x-auto w-full sm:w-auto scrollbar-hide pb-2">
               {[
                 { key: "all", label: "All" },
                 { key: "inquiry_sent", label: "New" },
@@ -92,7 +92,7 @@ export default function VendorOrders() {
                 <button
                   key={status.key}
                   onClick={() => setFilterStatus(status.key)}
-                  className={`px-4 py-2 rounded-lg font-medium transition ${
+                  className={`px-3 sm:px-4 py-2 text-xs sm:text-sm rounded-lg font-medium transition whitespace-nowrap ${
                     filterStatus === status.key
                       ? 'bg-emerald-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -231,58 +231,62 @@ export default function VendorOrders() {
                   )}
 
                   {/* Action Buttons */}
-                  <div className="flex gap-2 pt-4 border-t border-gray-200">
-                    {order.status === 'inquiry_sent' && (
-                      <>
-                        <button
-                          onClick={() => handleUpdateOrderStatus(order.id, 'responded')}
-                          className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-sm"
-                        >
-                          Mark as Responded
-                        </button>
+                  <div className="flex flex-col sm:flex-row gap-2 pt-4 border-t border-gray-200">
+                    <div className="flex flex-wrap gap-2">
+                      {order.status === 'inquiry_sent' && (
+                        <>
+                          <button
+                            onClick={() => handleUpdateOrderStatus(order.id, 'responded')}
+                            className="flex-1 sm:flex-none bg-emerald-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-emerald-700 transition text-xs sm:text-sm"
+                          >
+                            Mark as Responded
+                          </button>
+                          <button
+                            onClick={() => handleUpdateOrderStatus(order.id, 'in_progress')}
+                            className="flex-1 sm:flex-none bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition text-xs sm:text-sm"
+                          >
+                            Start Processing
+                          </button>
+                        </>
+                      )}
+                      {order.status === 'responded' && (
                         <button
                           onClick={() => handleUpdateOrderStatus(order.id, 'in_progress')}
-                          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm"
+                          className="flex-1 sm:flex-none bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition text-xs sm:text-sm"
                         >
-                          Start Processing
+                          Mark In Progress
                         </button>
-                      </>
-                    )}
-                    {order.status === 'responded' && (
-                      <button
-                        onClick={() => handleUpdateOrderStatus(order.id, 'in_progress')}
-                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm"
-                      >
-                        Mark In Progress
-                      </button>
-                    )}
-                    {order.status === 'in_progress' && (
-                      <button
-                        onClick={() => handleUpdateOrderStatus(order.id, 'completed')}
-                        className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition text-sm"
-                      >
-                        Mark Completed
-                      </button>
-                    )}
+                      )}
+                      {order.status === 'in_progress' && (
+                        <button
+                          onClick={() => handleUpdateOrderStatus(order.id, 'completed')}
+                          className="flex-1 sm:flex-none bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-green-700 transition text-xs sm:text-sm"
+                        >
+                          Mark Completed
+                        </button>
+                      )}
+                    </div>
                     
                     {/* Contact Customer Button */}
-                    <div className="flex gap-2 ml-auto">
+                    <div className="flex gap-2 sm:ml-auto">
                       {order.customerEmail && (
                         <a
                           href={`mailto:${order.customerEmail}?subject=Re: ${order.product?.name || 'Product Inquiry'}&body=Hi ${order.customerName || 'Customer'},%0A%0AThank you for your inquiry about ${order.product?.name || 'our product'}. `}
-                          className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition text-sm flex items-center gap-1"
+                          className="flex-1 sm:flex-none bg-gray-100 text-gray-700 px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-200 transition text-xs sm:text-sm flex items-center justify-center gap-1"
                         >
                           <Mail size={14} />
-                          Email Customer
+                          <span className="hidden sm:inline">Email Customer</span>
+                          <span className="sm:hidden">Email</span>
                         </a>
                       )}
                       {order.customerPhone && (
                         <a
                           href={`tel:${order.customerPhone}`}
-                          className="bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition text-sm flex items-center gap-1"
+                          className="flex-1 sm:flex-none bg-gray-100 text-gray-700 px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-200 transition text-xs sm:text-sm flex items-center justify-center gap-1"
                         >
                           <Phone size={14} />
-                          Call Customer
+                          <span className="hidden sm:inline">Call Customer</span>
+                          <span className="sm:hidden">Call</span>
                         </a>
                       )}
                     </div>

@@ -28,11 +28,11 @@ export default function VendorMessages() {
       <ToastContainer position="top-right" autoClose={3000} />
       <VendorSidebar />
 
-      <div className="ml-64 transition-all duration-300 p-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 h-[calc(100vh-6rem)]">
-          <div className="flex h-full">
+      <div className="lg:ml-64 transition-all duration-300 p-4 sm:p-6 pt-16 lg:pt-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 h-[calc(100vh-8rem)] sm:h-[calc(100vh-6rem)]">
+          <div className="flex flex-col lg:flex-row h-full">
             {/* Conversations List */}
-            <div className="w-1/3 border-r border-gray-200">
+            <div className="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-gray-200 h-1/3 lg:h-full">
               <div className="p-4 border-b border-gray-200">
                 <h2 className="text-xl font-bold text-gray-900 mb-4">Messages</h2>
                 <div className="relative">
@@ -78,8 +78,8 @@ export default function VendorMessages() {
             </div>
 
             {/* Chat Area */}
-            <div className="flex-1 flex flex-col">
-              <div className="text-center py-20 px-4">
+            <div className="flex-1 flex flex-col h-2/3 lg:h-full">
+              <div className="text-center py-10 sm:py-20 px-4">
                 <MessageSquare className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Messaging Feature Coming Soon!</h3>
                 <p className="text-gray-500 max-w-md mx-auto">

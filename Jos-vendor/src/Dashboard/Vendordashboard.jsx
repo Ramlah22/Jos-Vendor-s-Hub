@@ -257,26 +257,28 @@ export default function VendorDashboard() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="px-6 py-6 bg-white">
-        <div className="flex justify-between items-center">
+      <div className="px-4 sm:px-6 py-4 sm:py-6 bg-white">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="lg:ml-14">
-            <h1 className="text-2xl font-bold text-green-800 mb-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-green-800 mb-1">
               {vendor && (vendor.businessName || vendor.name) ? `${vendor.businessName || vendor.name}` : 'Vendor Dashboard'}
             </h1>
-            <p className="text-gray-600 font-semibold">{vendor && vendor.email ? vendor.email : ''}</p>
+            <p className="text-sm sm:text-base text-gray-600 font-semibold">{vendor && vendor.email ? vendor.email : ''}</p>
           </div>
-          <div className="flex gap-3">
-            <Link to="/Vendorpage1" className="px-4 py-2 rounded-lg border border-green-300 text-green-800 font-semibold hover:bg-gray-100">
+          <div className="flex flex-wrap gap-2 sm:gap-3 w-full sm:w-auto">
+            <Link to="/Vendorpage1" className="flex-1 sm:flex-none px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-green-300 text-green-800 font-semibold hover:bg-gray-100 text-center">
               View My Store
             </Link>
-          <Link to="/contact" className="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition-colors flex items-center gap-2">
+          <Link to="/contact" className="flex-1 sm:flex-none px-3 sm:px-4 py-2 text-sm sm:text-base bg-emerald-700 text-white rounded-lg hover:bg-emerald-800 transition-colors flex items-center justify-center gap-2">
             <Phone size={18} />
-            Contact Us
+            <span className="hidden sm:inline">Contact Us</span>
+            <span className="sm:hidden">Contact</span>
             </Link>
 
-          <button onClick={handleLogout} className="px-4 py-2 rounded-lg border border-red-300 text-red-700 font-semibold hover:bg-red-50 flex items-center gap-2">
+          <button onClick={handleLogout} className="flex-1 sm:flex-none px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-red-300 text-red-700 font-semibold hover:bg-red-50 flex items-center justify-center gap-2">
             <LogOut size={16} />
-            Logout
+            <span className="hidden sm:inline">Logout</span>
+            <span className="sm:hidden">Logout</span>
           </button>
 
           </div>
@@ -284,8 +286,8 @@ export default function VendorDashboard() {
       </div>
 
       {/* Stats Cards - now show for all tabs */}
-      <div className="px-6 mb-8 pt-8 bg-emerald-600 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="px-4 sm:px-6 mb-8 pt-6 sm:pt-8 bg-emerald-600 pb-6 sm:pb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon;
             return (
@@ -316,13 +318,13 @@ export default function VendorDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="px-10 mb-10">
+      <div className="px-4 sm:px-6 lg:px-10 mb-6 sm:mb-10">
         <div className="bg-gray-50 rounded-t-3xl shadow-lg border border-green-300 min-h-[500px]">
           {/* Tabs */}
-          <div className="flex border-b border-gray-200 px-6 pt-6">
+          <div className="flex overflow-x-auto border-b border-gray-200 px-4 sm:px-6 pt-4 sm:pt-6 scrollbar-hide">
             <button
               onClick={() => setActiveTab("requests")}
-              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium rounded-lg mr-2 mb-2 ${
+              className={`flex items-center gap-2 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg mr-2 mb-2 whitespace-nowrap ${
                 activeTab === "requests"
                   ? "text-white bg-emerald-500"
                   : "text-gray-500 hover:text-gray-700"
@@ -332,7 +334,7 @@ export default function VendorDashboard() {
             </button>
             <button
               onClick={() => setActiveTab("analytics")}
-              className={`px-4 py-3 text-sm font-medium rounded-lg mr-2 mb-2 ${
+              className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg mr-2 mb-2 whitespace-nowrap ${
                 activeTab === "analytics"
                   ? "text-white bg-emerald-500"
                   : "text-gray-500 hover:text-gray-700"
@@ -342,7 +344,7 @@ export default function VendorDashboard() {
             </button>
             <button
               onClick={() => setActiveTab("settings")}
-              className={`px-4 py-3 text-sm font-medium rounded-lg mb-2 ${
+              className={`px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg mb-2 whitespace-nowrap ${
                 activeTab === "settings"
                   ? "text-white bg-emerald-500"
                   : "text-gray-500 hover:text-gray-700"
@@ -426,19 +428,19 @@ export default function VendorDashboard() {
 
           {/* Analytics Tab */}
           {activeTab === "analytics" && (
-            <div className="p-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            <div className="p-4 sm:p-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 {/* Views & Orders Chart */}
                 <div className="bg-white p-6 rounded-xl border border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">
                     Views & Orders (Last 7 Days)
                   </h3>
-                  <div className="h-64">
+                  <div className="h-48 sm:h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={viewsOrdersData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                        <XAxis dataKey="day" stroke="#666" fontSize={12} />
-                        <YAxis stroke="#666" fontSize={12} />
+                        <XAxis dataKey="day" stroke="#666" fontSize={10} />
+                        <YAxis stroke="#666" fontSize={10} />
                         <Tooltip
                           contentStyle={{
                             backgroundColor: "white",
@@ -533,12 +535,12 @@ export default function VendorDashboard() {
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">
                     Revenue Overview (Last 7 Days)
                   </h3>
-                  <div className="h-64">
+                  <div className="h-48 sm:h-64">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={revenueData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                        <XAxis dataKey="day" stroke="#666" fontSize={12} />
-                        <YAxis stroke="#666" fontSize={12} />
+                        <XAxis dataKey="day" stroke="#666" fontSize={10} />
+                        <YAxis stroke="#666" fontSize={10} />
                         <Tooltip
                           contentStyle={{
                             backgroundColor: "white",
@@ -562,8 +564,8 @@ export default function VendorDashboard() {
 
           {/* Business Settings Tab */}
           {activeTab === "settings" && (
-            <div className="p-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="p-4 sm:p-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                 {/* Business Information */}
                 <div className="bg-white p-6 rounded-xl border border-gray-200">
                   <h3 className="text-lg font-semibold text-gray-900 mb-6">

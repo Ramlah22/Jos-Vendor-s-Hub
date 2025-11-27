@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Package, ShoppingCart, Clock, DollarSign, Plus, MessageSquare, TrendingUp, Users, CheckCircle, AlertCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Package, ShoppingCart, Clock, DollarSign, Plus, MessageSquare, TrendingUp, Users, CheckCircle, AlertCircle, Home } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { toast, ToastContainer } from "react-toastify";
@@ -134,19 +134,30 @@ export default function VendorOverview() {
       <ToastContainer position="top-right" autoClose={3000} />
       <VendorSidebar />
 
-      <div className="ml-64 transition-all duration-300 p-6">
+      <div className="lg:ml-64 transition-all duration-300 p-4 sm:p-6 pt-16 lg:pt-6">
         {/* Header */}
-        <div className="mb-8">
-          <p className="text-gray-600">{vendor?.businessName}</p>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Welcome back, {vendor?.vendorName || vendor?.businessName || 'Vendor'}!
-          </h1>
-          <p className="text-gray-600">{vendor?.email}</p>
-          <p className="text-gray-600">{vendor?.phone}</p>
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+            <div className="flex-1">
+              <p className="text-sm sm:text-base text-gray-600">{vendor?.businessName}</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                Welcome back, {vendor?.vendorName || vendor?.businessName || 'Vendor'}!
+              </h1>
+              <p className="text-sm sm:text-base text-gray-600">{vendor?.email}</p>
+              <p className="text-sm sm:text-base text-gray-600">{vendor?.phone}</p>
+            </div>
+            <Link
+              to="/"
+              className="flex items-center gap-2 bg-emerald-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm hover:shadow-md w-full sm:w-auto justify-center sm:justify-start"
+            >
+              <Home size={20} />
+              <span className="font-medium text-sm sm:text-base">Back to Home</span>
+            </Link>
+          </div>
         </div>
 
         {/* Stats Cards - Enhanced with 6 cards in 2 rows */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -168,9 +179,9 @@ export default function VendorOverview() {
         </div>
 
         {/* Order Status Summary */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 mb-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Order Status Overview</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 mb-4 sm:mb-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Order Status Overview</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <div className="text-center p-4 bg-blue-50 rounded-lg">
               <div className="text-2xl font-bold text-blue-600">{newInquiries}</div>
               <div className="text-sm text-gray-600">New Inquiries</div>
@@ -191,9 +202,9 @@ export default function VendorOverview() {
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 mb-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 mb-4 sm:mb-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Quick Actions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             <button
               onClick={() => navigate('/vendor/products')}
               className="flex items-center gap-3 p-4 bg-emerald-50 rounded-lg hover:bg-emerald-100 transition"
@@ -224,12 +235,12 @@ export default function VendorOverview() {
         </div>
 
         {/* Recent Orders */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+        <div className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-900">Recent Orders</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">Recent Orders</h2>
             <button
               onClick={() => navigate('/vendor/orders')}
-              className="text-emerald-600 hover:text-emerald-700 text-sm font-medium"
+              className="text-emerald-600 hover:text-emerald-700 text-xs sm:text-sm font-medium"
             >
               View All
             </button>
