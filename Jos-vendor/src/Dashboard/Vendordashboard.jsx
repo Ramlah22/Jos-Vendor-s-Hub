@@ -100,8 +100,6 @@ export default function VendorDashboard() {
     },
   ];
 
-  const navigate = useNavigate();
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

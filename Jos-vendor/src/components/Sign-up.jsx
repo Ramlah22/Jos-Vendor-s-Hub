@@ -218,6 +218,14 @@ const SignInPage = () => {
             Sign up
           </Link>
         </p>
+
+        {/* Admin sign-in shortcut */}
+        <p className="text-sm text-gray-500 mt-3">
+          Admin?{' '}
+          <Link to="/admin/login" className="text-green-700 hover:underline font-medium">
+            Sign in here
+          </Link>
+        </p>
       </div>
       
       {/* Pricing Modal for Vendors */}

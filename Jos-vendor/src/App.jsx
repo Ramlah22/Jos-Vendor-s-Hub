@@ -20,33 +20,55 @@ import VendorMessages from "./Dashboard/VendorMessages";
 import VendorSettings from "./Dashboard/VendorSettings";
 import FeatureNotImplemented from "./Pages/FeatureNotImplemented";
 
+// Admin Components
+import { AdminAuthProvider } from "./context/AdminAuthContext";
+import AdminLogin from "./components/AdminLogin";
+import AdminDashboard from "../AdminDashboard/AdminDashboard";
+import AdminCustomers from "../AdminDashboard/AdminCustomers";
+import AdminVendors from "../AdminDashboard/AdminVendors";
+import AdminProducts from "../AdminDashboard/AdminProducts";
+import AdminOrders from "../AdminDashboard/AdminOrders";
+import AdminSettings from "../AdminDashboard/AdminSettings";
+
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/forgot_password" element={<ResetPassword />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/create-account" element={<Login />} />
-        <Route path="/product" element={<Product />} />
-        <Route path="/product/:id" element={<ProductDetail />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/vendors" element={<VendorProfilePage />} />
-        <Route path="/vendor/:vendorId" element={<VendorDetail />} />
-        <Route path="/Vendorpage1" element={<Vendor1 />} />
-        <Route path="/VendorDashboard" element={<VendorDashboard />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/feature-not-implemented" element={<FeatureNotImplemented />} />
-        
-        {/* Vendor Dashboard Routes */}
-        <Route path="/vendor/overview" element={<VendorOverview />} />
-        <Route path="/vendor/products" element={<VendorProducts />} />
-        <Route path="/vendor/orders" element={<VendorOrders />} />
-        <Route path="/vendor/messages" element={<VendorMessages />} />
-        <Route path="/vendor/settings" element={<VendorSettings />} />
-      </Routes>
+      <AdminAuthProvider>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Homepage />} />
+          <Route path="/forgot_password" element={<ResetPassword />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/create-account" element={<Login />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/vendors" element={<VendorProfilePage />} />
+          <Route path="/vendor/:vendorId" element={<VendorDetail />} />
+          <Route path="/Vendorpage1" element={<Vendor1 />} />
+          <Route path="/VendorDashboard" element={<VendorDashboard />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/feature-not-implemented" element={<FeatureNotImplemented />} />
+          
+          {/* Vendor Dashboard Routes */}
+          <Route path="/vendor/overview" element={<VendorOverview />} />
+          <Route path="/vendor/products" element={<VendorProducts />} />
+          <Route path="/vendor/orders" element={<VendorOrders />} />
+          <Route path="/vendor/messages" element={<VendorMessages />} />
+          <Route path="/vendor/settings" element={<VendorSettings />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/customers" element={<AdminCustomers />} />
+          <Route path="/admin/vendors" element={<AdminVendors />} />
+          <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
+        </Routes>
+      </AdminAuthProvider>
     </Router>
   );
 }
